@@ -1,0 +1,26 @@
+<ion-view view-title="Browse" class="browse">
+  <ion-content>
+
+    <p>
+      Зарплата: <input ng-change="onModelChange()" ng-model="model.salary"/> $
+    </p>
+    <p>
+      Черный рынок продает: 1 $ за <input ng-change="onModelChange()" ng-model="model.blackMarketSell" /> грн
+    </p>
+    <p>
+      Банк покупает: 1 $ за <input ng-change="onModelChange()" ng-model="model.interbankMarketBuy" /> грн
+    </p>
+    <p>
+      Реальная зарплата: <span ng-bind="realSalary"></span> $
+    </p>
+    <br>
+    <p>
+      Потерял на конвертации: <span ng-bind="moneyExchangeLost"></span> $
+    </p>
+    <p>
+      Разница: <span ng-bind="exchangeDifference"></span>
+    </p>
+
+
+  </ion-content>
+</ion-view>
