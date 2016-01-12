@@ -6,7 +6,8 @@ var RS = RS || {} ;
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-RS.main = angular.module('main', ['ionic', 'starter.controllers', "Browse", "ServerManager"])
+RS.main = angular.module('main', ['ionic', 'starter.controllers', "Browse", "ServerManager", "Welcome",
+  "Tutorial"])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -32,6 +33,18 @@ RS.main = angular.module('main', ['ionic', 'starter.controllers', "Browse", "Ser
     abstract: true,
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
+  })
+
+  .state('welcome', {
+    url: '/welcome',
+    templateUrl: 'templates/welcome.html',
+    controller: 'WelcomeController'
+  })
+
+  .state('tutorial', {
+    url: '/tutorial',
+    templateUrl: 'templates/tutorial.html',
+    controller: 'TutorialController'
   })
 
   .state('app.search', {
@@ -72,5 +85,5 @@ RS.main = angular.module('main', ['ionic', 'starter.controllers', "Browse", "Ser
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/welcome');
 });

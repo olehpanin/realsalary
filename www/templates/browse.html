@@ -1,25 +1,42 @@
-<ion-view view-title="Browse" class="browse">
-  <ion-content>
+<ion-view view-title="Real Salary Calculator" class="browse">
+  <ion-content padding="true">
 
     <p>
-      Зарплата: <input ng-change="onModelChange()" ng-model="model.salary"/> $
+      Зарплата:
+      <label class="item item-input">
+        <input type="text" ng-change="onModelChange()" ng-model="model.salary" placeholder="Salary"> $
+      </label>
     </p>
     <p>
-      Черный рынок продает: 1 $ за <input ng-change="onModelChange()" ng-model="model.blackMarketSell" /> грн
+      Черный рынок продает: 1 $ за
+      <label class="item item-input">
+        <input type="text" ng-change="onModelChange()" ng-model="model.blackMarketSell" placeholder="Black market sell"> грн
+      </label>
     </p>
     <p>
-      Банк покупает: 1 $ за <input ng-change="onModelChange()" ng-model="model.interbankMarketBuy" /> грн
+      Банк покупает: 1 $ за
+      <label class="item item-input">
+        <input type="text" ng-change="onModelChange()" ng-model="model.interbankMarketBuy" placeholder="Bank buy"> грн
+      </label>
     </p>
     <p>
       Реальная зарплата: <span ng-bind="realSalary"></span> $
     </p>
-    <br>
+    </br>
     <p>
-      Потерял на конвертации: <span ng-bind="moneyExchangeLost"></span> $
+      Потерял на конвертации: <span ng-bind="moneyExchangeLost"></span> $ = <span ng-bind="moneyExchangeLostPercent | number : 2"></span> %
     </p>
     <p>
       Разница: <span ng-bind="exchangeDifference"></span>
     </p>
+
+    <p>
+      Data updated at: <span ng-bind="dataUpdatedAt | date:'yyyy-MM-dd HH:mm:ss'"></span>
+    </p>
+
+    <button class="button" ng-click="update()">
+      Get last data
+    </button>
 
 
   </ion-content>
