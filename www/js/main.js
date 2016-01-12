@@ -7,7 +7,7 @@ var RS = RS || {} ;
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 RS.main = angular.module('main', ['ionic', 'starter.controllers', "Browse", "ServerManager", "Welcome",
-  "Tutorial"])
+  "Tutorial", "Settings", "About", "MonthSaveCalculator"])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -47,43 +47,46 @@ RS.main = angular.module('main', ['ionic', 'starter.controllers', "Browse", "Ser
     controller: 'TutorialController'
   })
 
-  .state('app.search', {
-    url: '/search',
+  .state('app.browse', {
+    url: '/browse',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        controller : "BrowseController",
+        templateUrl: 'templates/browse.html'
       }
     }
   })
 
-  .state('app.browse', {
-      url: '/browse',
-      views: {
-        'menuContent': {
-          controller : "BrowseController",
-          templateUrl: 'templates/browse.html'
-        }
+  .state('app.about', {
+    url: '/about',
+    views: {
+      'menuContent': {
+        controller : "AboutController",
+        templateUrl: 'templates/about.html'
       }
-    })
-    .state('app.playlists', {
-      url: '/playlists',
+    }
+  })
+
+    .state('app.monthSaveCalculator', {
+      url: '/monthSaveCalculator',
       views: {
         'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
+          controller : "MonthSaveCalculatorController",
+          templateUrl: 'templates/monthSaveCalculator.html'
         }
       }
     })
 
-  .state('app.single', {
-    url: '/playlists/:playlistId',
+  .state('app.settings', {
+    url: '/settings',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        controller : "SettingsController",
+        templateUrl: 'templates/settings.html'
       }
     }
-  });
+  })
+;
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/welcome');
 });
